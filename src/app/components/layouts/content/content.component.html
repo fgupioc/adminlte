@@ -1,0 +1,67 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Page Header
+            <small>Optional description</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+    <section class="content container-fluid">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Empresas</h3>
+                <div class=" pull-right">
+                    <button type="button" class="btn bg-maroon margin">Nueva Empresa</button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Empresa</th>
+                            <th>Ruc</th>
+                            <th>Estado</th>
+                            <th width="10%">opciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let empresa of empresas; index as i;">
+                            <td><a href="pages/examples/invoice.html">{{ empresa.code }}</a></td>
+                            <td>{{ empresa.name }}</td>
+                            <td>
+                                {{ empresa.ruc }}
+                            </td>
+                            <td>
+                                <ng-template [ngIf]="empresa.state" [ngIfElse]="loading">
+                                    <div class="hero-list">
+                                        <span class="badge badge-success">Activo</span>
+                                    </div>
+                                </ng-template>
+
+                                <ng-template #loading>
+                                    <span class="badge badge-danger">inactivo</span>
+                                </ng-template>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm mr-10" title="Desactivar Empresa">
+                                    <i class="fa fa-times"></i></button>
+                                <button  type="button" class="btn btn-info btn-sm" title="Actualizar Empresa">
+                                    <i class="fa fa-pencil"></i></button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

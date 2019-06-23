@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --cs-color: #02819b;
+    --cs-color-medio: #009db9;
+    --cs-color-claro: #00bdd6;
+}
+
+.skin-blue .main-header .logo, .skin-blue .main-header .logo:hover, .skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: var(--cs-color);
+}
+
+.skin-blue .main-header .navbar {
+    padding: 0;
+    /*background-color: var(--cs-color-claro);*/
+    background: linear-gradient(to right,#00bdd6,#3F51B5);
+    /*background: linear-gradient(to right, #2a9eb0, #3b54de);*/
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background: linear-gradient(58deg,#009688,#3F51B5);
+}
+.skin-blue .sidebar-menu>li.header {
+    color: white;
+    background: #03a9f44a;
+}
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a {
+    color: #fff;
+    background: var(--cs-color);
+}
+.skin-blue .sidebar-menu>li>.treeview-menu {
+    background: var(--cs-color);
+}
+
+.container__logout{
+    background: linear-gradient(to right,#00bdd6,#3F51B5);
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>.user-footer {
+    background-color: transparent;
+}
+.container__logout .logout__text {
+    color: white;
+}
+
+.container__logout {
+    width: inherit !important;
+}
+
+.navbar-custom-menu>.navbar-nav>li>.dropdown-menu {
+    top: 38px;
+}
+@media (max-width: 991px) {
+    .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+        background: linear-gradient(to right,#00bdd6,#3F51B5) !important;
+        margin-top: 12px;
+        right: 0;
+        background: #fff;
+    }
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+    padding: 13px;
+}
