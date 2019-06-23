@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {EmpresaModalComponent} from '../../empresa-modal/empresa-modal.component';
+import {ShowEmpresa} from '../../models/show-empresa';
 
 @Component({
     selector: 'app-content',
@@ -6,7 +9,7 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-    empresa ;
+    empresa: ShowEmpresa ;
     empresas = [
         {
             code: '00001',
@@ -41,11 +44,39 @@ export class ContentComponent implements OnInit {
     ];
 
     constructor(
-
+        private modalService: NgbModal
     ) {
     }
 
     ngOnInit() {
     }
 
+    modalCreate() {
+        const modal = this.modalService.open(EmpresaModalComponent, {centered: true});
+        modal.result.then(
+            this.modalClose.bind(this),
+            this.modalClose.bind(this)
+        );
+    }
+
+    modalEdit(empresa: ShowEmpresa) {
+        const modal = this.modalService.open(EmpresaModalComponent, {centered: true});
+        modal.result.then(
+            this.modalClose.bind(this),
+            this.modalClose.bind(this)
+        );
+        modal.componentInstance.createMode = false;
+
+        modal.componentInstance.empresa = empresa;
+    }
+
+    modalClose(response) {
+        if(!response.createMode) {
+            let index = this.empresas.findIndex(value => value.code == response.empresa.code);
+            console.log(index)
+            this.empresas[index] = response.empresa;
+        }else{
+            this.empresas.push(response.empresa);
+        }
+    }
 }

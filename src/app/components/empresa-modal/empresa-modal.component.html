@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{createMode ? 'Crear empresa' : 'Editar empresa'}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="empresaForm" (ngSubmit)="saveTodo()">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="code">Title*</label>
+                    <input type="text" id="code" placeholder="Codigo" class="form-control" formControlName="code" />
+
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label for="ruc">Ruc de la empresa*</label>
+                    <input type="text" id="ruc" placeholder="Description" class="form-control" formControlName="ruc" [ngClass]="
+                    {
+                    'is-invalid': empresaForm.controls['ruc'].touched && empresaForm.controls['ruc'].errors?.required,
+                    'is-valid': empresaForm.controls['ruc'].touched && !empresaForm.controls['ruc'].errors?.required
+                     }
+                    ">
+                    <div class="invalid-feedback">
+                        El campo ruc es obligatorio.
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="name">Nombre de la empresa*</label>
+                    <input type="text"id="name" placeholder="Description" class="form-control" formControlName="name"
+                           [ngClass]="
+                    {
+                    'is-invalid': empresaForm.controls['name'].touched && empresaForm.controls['name'].errors?.required,
+                    'is-valid': empresaForm.controls['name'].touched && !empresaForm.controls['name'].errors?.required
+                     }
+                    ">
+                    <div class="invalid-feedback">
+                        El campo nombre es obligatorio.
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<div class="modal-footer d-flex justify-content-center">
+    <button type="button" class="btn btn-danger" (click)="activeModal.close()">Cancelar</button>
+    <button class="btn btn-primary" (click)="saveTodo()" [disabled]="empresaForm.invalid">Aceptar</button>
+</div>
